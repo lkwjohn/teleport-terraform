@@ -1,5 +1,10 @@
 terraform {
   required_version = ">= 0.14.9"
+  backend "s3" {
+    bucket = "teleport-state"
+    key    = "terraform.tfstate"
+    region = "ap-southeast-1"
+  }
 }
 
 provider "aws" {
