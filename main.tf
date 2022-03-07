@@ -14,7 +14,7 @@ provider "aws" {
 
 //module import
 module "teleport_network_setup" {
-    source      = "./modules/network"
+    source      = "./modules/core_network"
     vpc_cidr_block = "10.1.0.0/16"
     cidr_block  = "10.1.5.0/28"
 }
