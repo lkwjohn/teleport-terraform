@@ -12,11 +12,17 @@ provider "aws" {
   region  = "ap-southeast-1"
 }
 
+locals {
+   env = "${terraform.workspace}"
+   vpc_block = var.vpc_block
+   subnet_range_app = var.subnet_range_app
+}
+
 //module import
-module "teleport_network_setup" {
+module "network" {
     source      = "./modules/core_network"
-    vpc_cidr_block = "10.1.0.0/16"
-    cidr_block  = "10.1.5.0/28"
+    vpc_cidr_block   = local.vpc_block
+    subnet_range_app = local.subnet_range_app
 }
 
 
